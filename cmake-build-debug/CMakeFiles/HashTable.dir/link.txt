@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -Wall -g   CMakeFiles/HashTable.dir/HashTable.cpp.o CMakeFiles/HashTable.dir/tests.cpp.o  -o ../HashTable ../libHashTable.a 
