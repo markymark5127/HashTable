@@ -5,58 +5,103 @@
 #include "HashTable.h"
 #include "Flags.h"
 
+using namespace std;
 /* **************************************************************** */
 
 #if CONSTRUCTOR || ALL
-//HashTable::HashTable(int tableSize)
-//{
-//    // TODO: Constructor
-//}
+HashTable::HashTable(int tableSize)
+{
+    // TODO: Constructor
+    size = tableSize;
+    table = new Node*[size];
+    for(int i=0;i<size;i++)
+    {
+        table[i]= NULL;
+    }
+
+}
 #endif
 
 /* **************************************************************** */
 
 #if DESTRUCTOR || ALL
-//HashTable::~HashTable()
-//{
+HashTable::~HashTable()
+{
     // TODO: Destructor
-//}
+    delete[] table;
+}
 #endif
 
 /* **************************************************************** */
 
 #if INSERT || ALL
     // TODO: insert() method
+void HashTable::insert(string x)
+{
+    int i;
+    i = hash(x);
+    cout<<i<<"' is what \"i\" is";
+    Node *node = table[i];
+    while (node->data != "")
+    {
+        if(node->next == NULL)
+        {
+
+            node->next = new Node("",NULL);
+        }
+        else{}
+    }
+    node->data = x;
+}
 #endif
 
 /* **************************************************************** */
 
 #if FIND || ALL
     // TODO: find() method
+bool HashTable::find(string x)
+{
+    int i = hash(x);
+    return table[i];
+}
 #endif
 
 /* **************************************************************** */
 
 #if REMOVE || ALL
     // TODO: remove() method
+void HashTable::remove(string x)
+{
+    i = hash(element);
+    hash_table_array[i] = NULL;
+}
 #endif
 
 /* **************************************************************** */
 
 #if LOADFACTOR || ALL
     // TODO: loadFactor() method
+float HashTable::loadFactor()
+{
+}
 #endif
 
 /* **************************************************************** */
 
 #if MAXCHAINLENGTH || ALL
     // TODO: maxChainLength() method
+void HashTable::maxChainLength(int& maxLength, int& maxSlotIndex)
+{
+}
 #endif
 
 /* **************************************************************** */
 
 #if NUMEMPTYSLOTS || ALL
     // TODO: numEmptySlots() method
+int HashTable::numEmptySlots()
+{
+}
 #endif
 
 /* **************************************************************** */
