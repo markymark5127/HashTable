@@ -40,18 +40,17 @@ void HashTable::insert(string x)
 {
     int i;
     i = hash(x);
-    cout<<i<<"' is what \"i\" is";
-    Node *node = table[i];
-    while (node->data != "")
+    Node* node = table[i];
+    if(node == NULL)
     {
-        if(node->next == NULL)
-        {
-
-            node->next = new Node("",NULL);
-        }
-        else{}
+        node = new Node(x);
     }
-    node->data = x;
+    else {
+        while (node->next != NULL) {
+            node = node->next;
+        }
+        node->next = new Node(x);
+    }
 }
 #endif
 
@@ -61,8 +60,16 @@ void HashTable::insert(string x)
     // TODO: find() method
 bool HashTable::find(string x)
 {
-    int i = hash(x);
-    return table[i];
+    Node* node;
+    int i=hash(x);
+    // Iterate over list
+    node = table[i];
+    while (node != NULL) {
+        if(node->data ==x)
+        {return true;}
+        node = node->next;
+    }
+    return false;
 }
 #endif
 
@@ -72,8 +79,27 @@ bool HashTable::find(string x)
     // TODO: remove() method
 void HashTable::remove(string x)
 {
-    i = hash(element);
-    hash_table_array[i] = NULL;
+    if(find(x)) {
+        Node *node;
+        int i = hash(x);
+        // Iterate over list
+        node = table[i];
+        while (node != NULL) {
+            if (node->data == x) {
+                if (node->next != NULL) {
+                    node->data = node->next->data;
+                } else {
+                    node = NULL;
+                }
+            }
+            if (node != NULL) {
+                node = node->next;
+            }
+
+
+        }
+    }
+
 }
 #endif
 
@@ -83,6 +109,17 @@ void HashTable::remove(string x)
     // TODO: loadFactor() method
 float HashTable::loadFactor()
 {
+    Node* node;
+    float numOfNodes=0;
+    for (int i = 0; i < size; i++) {
+
+        node = table[i];
+        while (node != NULL) {
+            node = node->next;
+            numOfNodes++;
+        }
+    }
+    return numOfNodes/size;
 }
 #endif
 
@@ -92,6 +129,27 @@ float HashTable::loadFactor()
     // TODO: maxChainLength() method
 void HashTable::maxChainLength(int& maxLength, int& maxSlotIndex)
 {
+    Node* node;
+    int maxLen=0;
+    int maxSlot=0;
+    int currLen=0;
+    float numOfNodes=0;
+    for (int i = 0; i < size; i++) {
+
+        node = table[i];
+        while (node != NULL) {
+            node = node->next;
+            currLen++;
+        }
+        if(currLen > maxLen)
+        {
+            maxLen = currLen;
+            maxSlot = i;
+        }
+        currLen = 0;
+    }
+    maxLength = maxLen;
+    maxSlotIndex = maxSlot;
 }
 #endif
 
@@ -101,6 +159,13 @@ void HashTable::maxChainLength(int& maxLength, int& maxSlotIndex)
     // TODO: numEmptySlots() method
 int HashTable::numEmptySlots()
 {
+    int numEmpty=0;
+    for (int i = 0; i < size; i++) {
+        if (table[i] == NULL) {
+            numEmpty++;
+        }
+    }
+    return numEmpty;
 }
 #endif
 

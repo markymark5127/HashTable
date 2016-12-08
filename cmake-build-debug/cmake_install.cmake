@@ -1,4 +1,4 @@
-# Install script for directory: /home/mmayne/Downloads/HashTable
+# Install script for directory: /home/mmayne/ClionProjects/HashTable
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/mmayne/Downloads/HashTable/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/mmayne/ClionProjects/HashTable/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

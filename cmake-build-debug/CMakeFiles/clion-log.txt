@@ -1,4 +1,4 @@
-/home/mmayne/Downloads/clion-2016.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/mmayne/Downloads/HashTable
+/home/mmayne/Documents/clion-2016.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/mmayne/ClionProjects/HashTable
 -- The C compiler identification is GNU 4.8.5
 -- The CXX compiler identification is GNU 4.8.5
 -- Check for working C compiler: /usr/bin/cc
@@ -15,4 +15,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/mmayne/Downloads/HashTable/cmake-build-debug
+-- Build files have been written to: /home/mmayne/ClionProjects/HashTable/cmake-build-debug
