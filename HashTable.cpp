@@ -38,18 +38,13 @@ HashTable::~HashTable()
     // TODO: insert() method
 void HashTable::insert(string x)
 {
-    int i;
-    i = hash(x);
-    Node* node = table[i];
-    if(node == NULL)
+
+    if(!find(x))
     {
-        node = new Node(x);
-    }
-    else {
-        while (node->next != NULL) {
-            node = node->next;
-        }
-        node->next = new Node(x);
+        int i;
+        i = hash(x);
+        Node* node = table[i];
+        table[i] = new Node(x,node);
     }
 }
 #endif
@@ -62,7 +57,6 @@ bool HashTable::find(string x)
 {
     Node* node;
     int i=hash(x);
-    // Iterate over list
     node = table[i];
     while (node != NULL) {
         if(node->data ==x)
@@ -79,25 +73,26 @@ bool HashTable::find(string x)
     // TODO: remove() method
 void HashTable::remove(string x)
 {
-    if(find(x)) {
-        Node *node;
-        int i = hash(x);
-        // Iterate over list
-        node = table[i];
-        while (node != NULL) {
-            if (node->data == x) {
-                if (node->next != NULL) {
-                    node->data = node->next->data;
-                } else {
-                    node = NULL;
-                }
-            }
-            if (node != NULL) {
+    if(find(x))
+    {
+        int i;
+        i = hash(x);
+        Node* node = table[i];
+        if(table[i]->data == x)
+        {
+            table[i] = table[i]->next;
+        }
+        else if(table[i] != NULL)
+        {
+            while (node->next->data != x)
+            {
                 node = node->next;
             }
-
-
+            node->next = node->next->next;
         }
+
+
+
     }
 
 }
